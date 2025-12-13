@@ -506,7 +506,7 @@
     <string name="settings_video_volume">Volume Video</string>
     <!-- File Picker -->
     <string name="file_picker_permission_required">Izin Diperlukan</string>
-    <string name="file_picker_permission_desc">Untuk menjelajahi file, berikan izin 'Akses ke semua file'.</string>
+    <string name="file_picker_permission_desc">Untuk menjelajahi file, berikan izin \'Akses ke semua file\'.</string>
     <string name="file_picker_grant_permission">Berikan Izin</string>
     <string name="file_picker_cancel">Batal</string>
     <string name="file_picker_internal_storage">Penyimpanan Internal</string>
