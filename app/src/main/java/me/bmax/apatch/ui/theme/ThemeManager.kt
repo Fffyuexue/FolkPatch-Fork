@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import me.bmax.apatch.APApplication
+import me.bmax.apatch.util.MusicManager
 import org.json.JSONObject
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
@@ -471,6 +472,12 @@ object ThemeManager {
                     }
                 }
                 MusicConfig.save(context)
+
+                if (isMusicEnabled && isAutoPlayEnabled) {
+                    withContext(Dispatchers.Main) {
+                        MusicManager.reload()
+                    }
+                }
 
                 // 4. Apply Font
                 if (isFontEnabled) {
