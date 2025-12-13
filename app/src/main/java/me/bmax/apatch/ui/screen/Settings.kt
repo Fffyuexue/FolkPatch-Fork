@@ -393,21 +393,8 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         // Theme Export/Import
         var pendingExportMetadata by remember { mutableStateOf<ThemeManager.ThemeMetadata?>(null) }
         val showExportDialog = remember { mutableStateOf(false) }
-        val exportThemeLauncher = rememberLauncherForActivityResult(
-            ActivityResultContracts.CreateDocument("application/octet-stream")
-        ) { uri: Uri? ->
-            if (uri != null && pendingExportMetadata != null) {
-                scope.launch {
-                    loadingDialog.show()
-                    val success = ThemeManager.exportTheme(context, uri, pendingExportMetadata!!)
-                    loadingDialog.hide()
-                    snackBarHost.showSnackbar(
-                        message = if (success) context.getString(R.string.settings_theme_saved) else context.getString(R.string.settings_theme_save_failed)
-                    )
-                    pendingExportMetadata = null
-                }
-            }
-        }
+
+        // Removed exportThemeLauncher as we are now saving directly to a fixed path
 
         var pendingImportUri by remember { mutableStateOf<Uri?>(null) }
         var pendingImportMetadata by remember { mutableStateOf<ThemeManager.ThemeMetadata?>(null) }
@@ -1535,10 +1522,29 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 showDialog = showExportDialog,
                 onConfirm = { metadata ->
                     pendingExportMetadata = metadata
-                    try {
-                        exportThemeLauncher.launch("theme.fpt")
-                    } catch (e: ActivityNotFoundException) {
-                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                    scope.launch {
+                        loadingDialog.show()
+                        try {
+                            val exportDir = java.io.File("/storage/emulated/0/Download/FolkPatch/Themes/")
+                             if (!exportDir.exists()) {
+                                 exportDir.mkdirs()
+                             }
+                             val safeName = metadata.name.replace("[\\\\/:*?\"<>|]".toRegex(), "_")
+                             val fileName = "$safeName.fpt"
+                             val file = java.io.File(exportDir, fileName)
+                             val uri = Uri.fromFile(file)
+                            
+                            val success = ThemeManager.exportTheme(context, uri, metadata)
+                            
+                            loadingDialog.hide()
+                            snackBarHost.showSnackbar(
+                                message = if (success) context.getString(R.string.settings_theme_saved) + ": ${file.absolutePath}" else context.getString(R.string.settings_theme_save_failed)
+                            )
+                        } catch (e: Exception) {
+                            loadingDialog.hide()
+                            snackBarHost.showSnackbar(message = context.getString(R.string.settings_theme_save_failed) + ": ${e.message}")
+                        }
+                        pendingExportMetadata = null
                     }
                 }
             )

@@ -526,7 +526,7 @@
     <string name="settings_video_volume">Громкость Видео</string>
     <!-- File Picker -->
     <string name="file_picker_permission_required">Требуется разрешение</string>
-    <string name="file_picker_permission_desc">Для просмотра файлов предоставьте разрешение 'Доступ ко всем файлам'.</string>
+    <string name="file_picker_permission_desc">Для просмотра файлов предоставьте разрешение \'Доступ ко всем файлам\'.</string>
     <string name="file_picker_grant_permission">Предоставить разрешение</string>
     <string name="file_picker_cancel">Отмена</string>
     <string name="file_picker_internal_storage">Внутреннее хранилище</string>
