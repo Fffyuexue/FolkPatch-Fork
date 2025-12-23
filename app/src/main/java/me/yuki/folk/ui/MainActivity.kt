@@ -1,7 +1,9 @@
 package me.yuki.folk.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -44,6 +46,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
 import coil.Coil
 import coil.ImageLoader
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -54,6 +57,7 @@ import com.ramcosta.composedestinations.utils.isRouteOnBackStackAsState
 import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
 import me.yuki.folk.APApplication
 import me.yuki.folk.ui.screen.BottomBarDestination
+import me.yuki.folk.ui.screen.MODULE_TYPE
 import me.yuki.folk.ui.theme.APatchTheme
 import me.yuki.folk.ui.theme.APatchThemeWithBackground
 import me.yuki.folk.ui.theme.BackgroundConfig
@@ -94,6 +98,7 @@ import androidx.compose.ui.platform.LocalContext
 class MainActivity : AppCompatActivity() {
 
     private var isLoading = true
+    private var installUri: Uri? = null
     private lateinit var permissionHandler: PermissionRequestHandler
 
     override fun attachBaseContext(newBase: android.content.Context) {
@@ -111,6 +116,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
+        
+        installUri = if (intent.action == Intent.ACTION_SEND) {
+             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+            } else {
+                @Suppress("DEPRECATION")
+                intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
+            }
+        } else {
+            intent.data ?: run {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableArrayListExtra("uris", Uri::class.java)?.firstOrNull()
+                } else {
+                    @Suppress("DEPRECATION")
+                    intent.getParcelableArrayListExtra<Uri>("uris")?.firstOrNull()
+                }
+            }
+        }
 
         // 初始化权限处理器
         permissionHandler = PermissionRequestHandler(this)
@@ -200,9 +223,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             val navController = rememberNavController()
+            val navigator = navController.rememberDestinationsNavigator()
             val snackBarHostState = remember { SnackbarHostState() }
             val bottomBarRoutes = remember {
                 BottomBarDestination.entries.map { it.direction.route }.toSet()
+            }
+            
+            val uri = installUri
+            LaunchedEffect(Unit) {
+                if (uri != null) {
+                    navigator.navigate(InstallScreenDestination(uri, MODULE_TYPE.APM))
+                }
             }
 
             APatchThemeWithBackground(navController = navController) {
