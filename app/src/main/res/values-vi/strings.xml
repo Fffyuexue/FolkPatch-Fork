@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">Trang chủ</string>
     <string name="kernel_patch">Bản vá Kernel</string>
     <string name="android_patch">Bản vá Android</string>
@@ -90,6 +89,12 @@
     <string name="apm">APModule</string>
     <string name="settings_app_language">Ngôn ngữ</string>
     <string name="system_default">Mặc định hệ thống</string>
+    <string name="settings_app_dpi">DPI ứng dụng</string>
+    <string name="dpi_preset_system_default">Mặc định hệ thống</string>
+    <string name="dpi_preset_small">Nhỏ (320 DPI)</string>
+    <string name="dpi_preset_medium">Trung bình (400 DPI)</string>
+    <string name="dpi_preset_large">Lớn (480 DPI)</string>
+    <string name="dpi_preset_xlarge">Rất lớn (560 DPI)</string>
     <string name="home_apatch_version">Phiên bản FolkPatch</string>
     <string name="patch">Bản vá</string>
     <string name="settings_global_namespace_mode">Chế độ Global Namespace</string>

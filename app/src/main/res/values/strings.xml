@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">FolkLite</string>
 
     <string name="home">Home</string>
 
@@ -25,6 +25,12 @@
     <string name="about">About</string>
     <string name="settings_app_language">Language</string>
     <string name="system_default">System default</string>
+    <string name="settings_app_dpi">App DPI</string>
+    <string name="dpi_preset_system_default">System Default</string>
+    <string name="dpi_preset_small">Small (320 DPI)</string>
+    <string name="dpi_preset_medium">Medium (400 DPI)</string>
+    <string name="dpi_preset_large">Large (480 DPI)</string>
+    <string name="dpi_preset_xlarge">XLarge (560 DPI)</string>
     <string name="settings_global_namespace_mode">Global namespace mode</string>
     <string name="settings_global_namespace_mode_summary">All root sessions use the global mount namespace</string>
     <string name="settings_apm_sorting">Smart APM sorting</string>

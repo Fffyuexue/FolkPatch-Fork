@@ -5,7 +5,6 @@
     <string name="android_patch">AndroidPatch</string>
     <string name="apm">APModul</string>
     <string name="super_key">SuperKey</string>
-    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="kpm">KPModul</string>
     <string name="reboot_recovery">Reboot ke Recovery</string>
     <string name="reboot">Reboot</string>
@@ -91,6 +90,12 @@
     <string name="apm_not_installed">AndroidPatch tidak terinstal</string>
     <string name="settings_app_language">Bahasa</string>
     <string name="system_default">Bawaan sistem</string>
+    <string name="settings_app_dpi">DPI Aplikasi</string>
+    <string name="dpi_preset_system_default">Bawaan Sistem</string>
+    <string name="dpi_preset_small">Kecil (320 DPI)</string>
+    <string name="dpi_preset_medium">Sedang (400 DPI)</string>
+    <string name="dpi_preset_large">Besar (480 DPI)</string>
+    <string name="dpi_preset_xlarge">Sangat Besar (560 DPI)</string>
     <string name="patch">Patch</string>
     <string name="settings_global_namespace_mode_summary">Gunakan universal namespace ke semua root sesi</string>
     <string name="settings_global_namespace_mode">Mode universal namespace</string>

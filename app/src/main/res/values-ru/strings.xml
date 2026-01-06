@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">Главная</string>
     <string name="super_key">СуперКлюч</string>
     <string name="patch_warnning">Пожалуйста, убедитесь, что у вас есть резервная копия ваших данных. Установка сопряжена с рисками.</string>
@@ -91,6 +90,12 @@
     <string name="apm_not_installed">AndroidPatch не установлен</string>
     <string name="settings_app_language">Язык</string>
     <string name="system_default">Как в системе</string>
+    <string name="settings_app_dpi">DPI приложения</string>
+    <string name="dpi_preset_system_default">По умолчанию системы</string>
+    <string name="dpi_preset_small">Маленький (320 DPI)</string>
+    <string name="dpi_preset_medium">Средний (400 DPI)</string>
+    <string name="dpi_preset_large">Большой (480 DPI)</string>
+    <string name="dpi_preset_xlarge">Очень большой (560 DPI)</string>
     <string name="patch">Патч</string>
     <string name="settings_global_namespace_mode">Режим глобального пространства имён</string>
     <string name="settings_global_namespace_mode_summary">Все сеансы суперпользователя root используют монтирование глобального пространства имён</string>

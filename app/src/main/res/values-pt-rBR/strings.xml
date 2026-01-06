@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">Início</string>
     <string name="patch_warnning">A instalação apresenta riscos. Por favor, certifique-se de fazer backup de seus dados.</string>
     <string name="patch_title">Patch</string>
@@ -91,6 +90,12 @@
     <string name="apm_not_installed">AndroidPatch não instalado</string>
     <string name="settings_app_language">Idioma</string>
     <string name="system_default">Padrão do sistema</string>
+    <string name="settings_app_dpi">DPI do App</string>
+    <string name="dpi_preset_system_default">Padrão do sistema</string>
+    <string name="dpi_preset_small">Pequeno (320 DPI)</string>
+    <string name="dpi_preset_medium">Médio (400 DPI)</string>
+    <string name="dpi_preset_large">Grande (480 DPI)</string>
+    <string name="dpi_preset_xlarge">Muito grande (560 DPI)</string>
     <string name="patch">Patch</string>
     <string name="settings_global_namespace_mode">Modo de namespace global</string>
     <string name="settings_global_namespace_mode_summary">Todas as sessões root usam o namespace de montagem global</string>

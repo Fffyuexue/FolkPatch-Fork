@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="android_patch">Android 修補</string>
     <string name="patch_warnning">安裝過程存在風險。請確保你的資料已備份。</string>
     <string name="reboot_download">重新啟動至 Download</string>
@@ -91,6 +90,12 @@
     <string name="apm_not_installed">AndroidPatch 尚未安裝</string>
     <string name="system_default">系統預設</string>
     <string name="settings_app_language">語言</string>
+    <string name="settings_app_dpi">應用程式 DPI</string>
+    <string name="dpi_preset_system_default">系統預設</string>
+    <string name="dpi_preset_small">小 (320 DPI)</string>
+    <string name="dpi_preset_medium">中 (400 DPI)</string>
+    <string name="dpi_preset_large">大 (480 DPI)</string>
+    <string name="dpi_preset_xlarge">超大 (560 DPI)</string>
     <string name="patch">修補</string>
     <string name="settings_global_namespace_mode_summary">所有 Root 工作階段將會全域掛載命名空間</string>
     <string name="settings_global_namespace_mode">全域命名空間模式</string>

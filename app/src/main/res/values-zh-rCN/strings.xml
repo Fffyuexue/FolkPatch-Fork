@@ -2,7 +2,6 @@
 <resources>
     <string name="apm">系统模块</string>
     <string name="super_key">超级密钥</string>
-    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="kpm">内核模块</string>
     <string name="android_patch">系统补丁</string>
     <string name="save_log">保存日志</string>
@@ -111,6 +110,12 @@
     <string name="apm_not_installed">尚未注入系统补丁</string>
     <string name="system_default">系统默认</string>
     <string name="settings_app_language">语言</string>
+    <string name="settings_app_dpi">应用 DPI</string>
+    <string name="dpi_preset_system_default">系统默认</string>
+    <string name="dpi_preset_small">小 (320 DPI)</string>
+    <string name="dpi_preset_medium">中 (400 DPI)</string>
+    <string name="dpi_preset_large">大 (480 DPI)</string>
+    <string name="dpi_preset_xlarge">超大 (560 DPI)</string>
     <string name="patch">修补内核镜像</string>
     <string name="settings_global_namespace_mode_summary">所有 Root 会话均使用全局挂载命名空间</string>
     <string name="settings_global_namespace_mode">全局命名空间模式</string>

@@ -1,5 +1,6 @@
 package me.bmax.apatch.ui.screen
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -49,6 +50,7 @@ import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.LoadingDialogHandle
 import me.bmax.apatch.ui.component.rememberLoadingDialog
 import me.bmax.apatch.util.APatchKeyHelper
+import me.bmax.apatch.util.DPIUtils
 import me.bmax.apatch.util.getBugreportFile
 import me.bmax.apatch.util.isForceUsingOverlayFS
 import me.bmax.apatch.util.isGlobalNamespaceEnabled
@@ -166,6 +168,9 @@ fun SettingScreen() {
         ) {
             item {
                 val prefs = APApplication.sharedPreferences
+                var currentDpi by rememberSaveable {
+                    mutableIntStateOf(prefs.getInt("app_dpi", -1))
+                }
                 Card {
                     // clear key
                     if (kPatchReady) {
@@ -429,6 +434,33 @@ fun SettingScreen() {
                                     )
                                 )
                             }
+                        }
+                    )
+
+                    // App DPI
+                    val dpiItems = listOf(
+                        stringResource(id = R.string.dpi_preset_system_default),
+                        stringResource(id = R.string.dpi_preset_small),
+                        stringResource(id = R.string.dpi_preset_medium),
+                        stringResource(id = R.string.dpi_preset_large),
+                        stringResource(id = R.string.dpi_preset_xlarge)
+                    )
+                    val dpiValues = listOf(-1, 320, 400, 480, 560)
+                    var dpiIndex by rememberSaveable {
+                        mutableStateOf(dpiValues.indexOf(currentDpi).coerceAtLeast(0))
+                    }
+
+                    SuperDropdown(
+                        title = stringResource(id = R.string.settings_app_dpi),
+                        items = dpiItems,
+                        selectedIndex = dpiIndex,
+                        onSelectedIndexChange = { index ->
+                            DPIUtils.setDpi(context, dpiValues[index])
+                            prefs.edit { putInt("app_dpi", dpiValues[index]) }
+                            currentDpi = dpiValues[index]
+                            dpiIndex = index
+                            // Recreate activity to apply DPI change
+                            (context as? Activity)?.recreate()
                         }
                     )
 

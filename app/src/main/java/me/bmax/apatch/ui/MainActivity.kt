@@ -1,6 +1,7 @@
 package me.bmax.apatch.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.net.Uri
 import android.os.Bundle
@@ -72,6 +73,10 @@ import top.yukonga.miuix.kmp.basic.Scaffold
 
 class MainActivity : AppCompatActivity() {
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(me.bmax.apatch.util.DPIUtils.updateContext(newBase))
+    }
+
     private var isLoading = true
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -85,6 +90,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
+
+        // Initialize DPI settings
+        me.bmax.apatch.util.DPIUtils.load(this)
+        me.bmax.apatch.util.DPIUtils.applyDpi(this)
 
         // Disables automatic window adjustment when the soft keyboard appears
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
