@@ -24,6 +24,8 @@
     <string name="system_default">默认魔法</string>
     <string name="settings_global_namespace_mode">全域魔法领域</string>
     <string name="settings_global_namespace_mode_summary">所有变身仪式共享同一个魔法空间</string>
+    <string name="settings_apm_sorting">星之魔法阵智慧排序</string>
+    <string name="settings_apm_sorting_summary">使魔法等级更高的魔法阵优先显示。</string>
     <string name="settings_clear_super_key_dialog">确定要继续施展这个魔法吗？</string>
 
     <string name="home_learn_apatch">了解心之契约</string>
@@ -209,8 +211,8 @@
     <string name="settings_use_system_color_theme">星界颜色主题</string>
     <string name="settings_use_system_color_theme_summary">使用星界根据魔法阵生成的颜色主题</string>
     <string name="settings_custom_color_theme">颜色魔法主题</string>
-
-    <string name="amber_theme">琥珀之光</string>
+        <string name="settings_home_layout_style">魔法大厅布局样式</string>
+        <string name="amber_theme">琥珀之光</string>
     <string name="blue_theme">星空之蓝</string>
     <string name="blue_grey_theme">月影之灰</string>
     <string name="brown_theme">大地之棕</string>
@@ -263,4 +265,6 @@
     <string name="update_available_message">检测到您的魔法等级过低，是否要下载新版本的魔法？</string>
     <string name="update_action">升级魔法</string>
     <string name="update_close">关闭</string>
-    </resources>
+    <string name="settings_apm_stay_on_page">留在魔法操作页面</string>
+    <string name="settings_apm_stay_on_page_summary">星之魔法阵执行完操作后不自动返回</string>
+</resources>

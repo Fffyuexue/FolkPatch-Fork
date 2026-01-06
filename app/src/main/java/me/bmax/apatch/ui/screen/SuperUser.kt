@@ -155,7 +155,7 @@ fun SuperTopBar(
                 ListPopup(
                     show = showDropdown,
                     onDismissRequest = { showDropdown.value = false },
-                    alignment = PopupPositionProvider.Align.Left
+                    alignment = PopupPositionProvider.Align.Right
                 ) {
                     ListPopupColumn {
                         DropdownItem(

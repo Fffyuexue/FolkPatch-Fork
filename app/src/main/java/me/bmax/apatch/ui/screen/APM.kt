@@ -25,6 +25,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Archive
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.InstallMobile
+import androidx.compose.material.icons.filled.OpenInBrowser
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -39,20 +45,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.core.net.toUri
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.ExecuteAPMActionScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
-import com.ramcosta.composedestinations.generated.destinations.OnlineAPMModuleScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -86,10 +91,6 @@ import top.yukonga.miuix.kmp.basic.PullToRefresh
 import top.yukonga.miuix.kmp.basic.SearchBar
 import top.yukonga.miuix.kmp.basic.Switch
 import top.yukonga.miuix.kmp.basic.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CloudDownload
-import top.yukonga.miuix.kmp.basic.IconButton
-import top.yukonga.miuix.kmp.theme.MiuixTheme.colorScheme
 import top.yukonga.miuix.kmp.utils.overScrollVertical
 
 @Destination<RootGraph>
@@ -120,6 +121,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
     val viewModel = viewModel<APModuleViewModel>()
 
     LaunchedEffect(Unit) {
+        viewModel.isApmSortEnabled = APApplication.sharedPreferences.getBoolean("apm_sort_enabled", true)
         if (viewModel.moduleList.isEmpty() || viewModel.isNeedRefresh) {
             viewModel.fetchModuleList()
         }
@@ -138,15 +140,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.apm),
-                scrollBehavior = scrollBehavior,
-                actions = {
-                    IconButton(onClick = { navigator.navigate(OnlineAPMModuleScreenDestination) }) {
-                        Icon(
-                            imageVector = Icons.Filled.CloudDownload,
-                            contentDescription = "Online Modules"
-                        )
-                    }
-                }
+                scrollBehavior = scrollBehavior
             )
         }, floatingActionButton = if (hideInstallButton) {
             { /* Empty */ }
@@ -178,12 +172,14 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                         selectZipLauncher.launch(intent)
                     }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.package_import),
-                        contentDescription = null
+                        imageVector = Icons.Default.Archive,
+                        contentDescription = null,
+                        tint = MiuixTheme.colorScheme.onPrimary
                     )
                 }
             }
-        }, ){ innerPadding ->
+        }, popupHost = {}
+        ) { innerPadding ->
         when {
             hasMagisk -> {
                 Box(
@@ -252,6 +248,7 @@ private fun ModuleList(
     val changelogText = stringResource(R.string.apm_changelog)
     val downloadingText = stringResource(R.string.apm_downloading)
     val startDownloadingText = stringResource(R.string.apm_start_downloading)
+    val changelogFailed = stringResource(R.string.apm_changelog_failed)
 
     val loadingDialog = rememberLoadingDialog()
     val confirmDialog = rememberConfirmDialog()
@@ -265,30 +262,32 @@ private fun ModuleList(
         fileName: String
     ) {
         val changelog = loadingDialog.withLoading {
-            withContext(Dispatchers.IO) {
-                if (Patterns.WEB_URL.matcher(changelogUrl).matches()) {
-                    apApp.okhttpClient.newCall(
-                        okhttp3.Request.Builder().url(changelogUrl).build()
-                    ).execute().body!!.string()
-                } else {
-                    changelogUrl
+                withContext(Dispatchers.IO) {
+                    runCatching {
+                        if (Patterns.WEB_URL.matcher(changelogUrl).matches()) {
+                            apApp.okhttpClient
+                                .newCall(
+                                    okhttp3.Request.Builder().url(changelogUrl).build()
+                                )
+                                .execute()
+                                .use { it.body?.string().orEmpty() }
+                        } else {
+                            changelogUrl
+                        }
+                    }.getOrDefault("")
                 }
-            }
         }
 
 
-        if (changelog.isNotEmpty()) {
-            // changelog is not empty, show it and wait for confirm
-            val confirmResult = confirmDialog.awaitConfirm(
-                changelogText,
-                content = changelog,
-                markdown = true,
-                confirm = updateText,
-            )
+        val confirmResult = confirmDialog.awaitConfirm(
+            changelogText,
+            content = changelog.ifEmpty { changelogFailed },
+            markdown = true,
+            confirm = updateText,
+        )
 
-            if (confirmResult != ConfirmResult.Confirmed) {
-                return
-            }
+        if (confirmResult != ConfirmResult.Confirmed){
+            return
         }
 
         withContext(Dispatchers.Main) {
@@ -347,28 +346,32 @@ private fun ModuleList(
         isRefreshing = viewModel.isRefreshing,
         onRefresh = { viewModel.fetchModuleList() },
     ) {
-        SearchBar(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 16.dp),
-            inputField = {
-                InputField(
-                    query = viewModel.search,
-                    onQueryChange = { viewModel.search = it },
-                    onSearch = {
-                        expanded = false
-                    },
-                    expanded = expanded,
-                    onExpandedChange = {
-                        expanded = it
-                        if (!it) viewModel.search = ""
-                    }
-                )
-            },
-            expanded = expanded,
-            onExpandedChange = { expanded = it },
-            content = {}
-        )
+                .padding(top = 5.dp)
+                .zIndex(10f)
+        ) {
+            SearchBar(
+                inputField = {
+                    InputField(
+                        query = viewModel.search,
+                        onQueryChange = { viewModel.search = it },
+                        onSearch = {
+                            expanded = false
+                        },
+                        expanded = expanded,
+                        onExpandedChange = {
+                            expanded = it
+                            if (!it) viewModel.search = ""
+                        }
+                    )
+                },
+                expanded = expanded,
+                onExpandedChange = { expanded = it },
+                content = {}
+            )
+        }
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -485,7 +488,12 @@ private fun ModuleItem(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Row(
-                    modifier = Modifier.padding(all = 16.dp),
+                    modifier = Modifier.padding(
+                        start = 16.dp,
+                        end = 16.dp,
+                        top = 16.dp,
+                        bottom = 5.dp
+                    ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column(
@@ -526,30 +534,23 @@ private fun ModuleItem(
                 )
 
                 HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 8.dp),
+                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                     thickness = 0.5.dp,
-                    color = colorScheme.outline.copy(alpha = 0.5f)
+                    color = MiuixTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
 
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 8.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-
-                    if (module.hasWebUi) {
-                        IconTextButton(
-                            iconRes = R.drawable.webui,
-                            onClick = { onClick(module) }
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = 7.dp
                         )
-                        Spacer(modifier = Modifier.width(12.dp))
-                    }
-
-
+                        .fillMaxWidth()
+                ) {
                     if (module.hasActionScript) {
                         IconTextButton(
-                            iconRes = R.drawable.settings,
+                            imageVector = Icons.Default.PlayArrow,
                             onClick = {
                                 navigator.navigate(ExecuteAPMActionScreenDestination(module.id))
                                 viewModel.markNeedRefresh()
@@ -558,11 +559,19 @@ private fun ModuleItem(
                         Spacer(modifier = Modifier.width(12.dp))
                     }
 
+                    if (module.hasWebUi) {
+                        IconTextButton(
+                            imageVector = Icons.Default.OpenInBrowser,
+                            onClick = { onClick(module) }
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                    }
+
                     Spacer(modifier = Modifier.weight(1f))
 
                     if (updateUrl.isNotEmpty()) {
                         IconTextButton(
-                            iconRes = R.drawable.device_mobile_down,
+                            imageVector = Icons.Default.InstallMobile,
                             onClick = { onUpdate(module) }
                         )
                         Spacer(modifier = Modifier.width(12.dp))
@@ -570,14 +579,14 @@ private fun ModuleItem(
 
                     if (!module.remove) {
                         IconTextButton(
-                            iconRes = R.drawable.trash,
+                            imageVector = Icons.Default.Delete,
                             onClick = { onUninstall(module) }
                         )
                     }
                 }
             }
             if (module.update) {
-                ModuleStateIndicator(R.drawable.device_mobile_down)
+                ModuleStateIndicator(Icons.Default.InstallMobile)
             }
         }
     }

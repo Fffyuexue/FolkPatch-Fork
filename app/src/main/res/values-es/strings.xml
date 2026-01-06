@@ -94,6 +94,8 @@
     <string name="patch">Parchear</string>
     <string name="settings_global_namespace_mode">Modo de espacio de nombres global</string>
     <string name="settings_global_namespace_mode_summary">Todas las sesiones «root» utilizan el espacio de nombres de montaje global</string>
+    <string name="settings_apm_sorting">Ordenación inteligente de APM</string>
+    <string name="settings_apm_sorting_summary">Hacer que los módulos con mayor prioridad se muestren primero.</string>
     <string name="settings_clear_super_key_dialog">¿Seguro que quieres continuar?</string>
     <string name="kpatch_version_update">Versión: %1$s → %2$s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
@@ -173,6 +175,7 @@
     <string name="kpm_control_dialog_title">Control de KPModule</string>
     <string name="settings_use_system_color_theme_summary">Utiliza un esquema de colores generado por el sistema basado en el fondo de pantalla actual</string>
     <string name="settings_custom_color_theme">Esquema de colores</string>
+    <string name="settings_home_layout_style">Estilo de diseño de la pantalla de inicio</string>
     <string name="deep_orange_theme">Naranja oscuro</string>
     <string name="deep_purple_theme">Morado oscuro</string>
     <string name="green_theme">Verde</string>
@@ -228,4 +231,6 @@
     <string name="online_module_download_complete">Descarga completa: %s</string>
     <string name="online_module_download_notification">Descargando %s. Revisa el panel de notificaciones para el progreso y la carpeta Download para el archivo.</string>
     <string name="online_module_empty">No hay módulos disponibles</string>
+    <string name="settings_apm_stay_on_page">Permanecer en la página</string>
+    <string name="settings_apm_stay_on_page_summary">No volver automáticamente después de que el módulo del sistema realice la operación</string>
 </resources>

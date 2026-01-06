@@ -94,6 +94,8 @@
     <string name="patch">باتش</string>
     <string name="settings_global_namespace_mode_summary">جميع مساحات الروت تستخدم مساحة الاسم العامة للتثبيت</string>
     <string name="settings_global_namespace_mode">وضع APatchمساحة الاسم العام</string>
+    <string name="settings_apm_sorting">الفرز الذكي لإضافات AP</string>
+    <string name="settings_apm_sorting_summary">جعل الإضافات ذات الأولوية الأعلى تظهر أولاً.</string>
     <string name="patch_item_kpimg">kpimg</string>
     <string name="patch_item_extra_name">الاسم:</string>
     <string name="patch_item_set_skey_label">يجب أن يكون طول المفتاح الخارق ٧~٦٣ علامة ويتضمن كلاً من الأرقام والحروف بلا علامات مميزة</string>
@@ -199,6 +201,7 @@
     <string name="settings_night_theme_enabled">تمكين المظهر الداكن</string>
     <string name="settings_use_system_color_theme_summary">استخدام لون الموضوع الذي يولده النظام استنادا إلى ورق الحائط الحالي</string>
     <string name="settings_custom_color_theme">لون الحلة</string>
+    <string name="settings_home_layout_style">نمط تخطيط الصفحة الرئيسية</string>
     <string name="blue_grey_theme">مظهر BlueGrey</string>
     <string name="blue_theme">أزرق</string>
     <string name="deep_orange_theme">مظهر برتقالي غامق</string>
@@ -231,4 +234,6 @@
     <string name="online_module_download_complete">اكتمل التنزيل: %s</string>
     <string name="online_module_download_notification">جارٍ تنزيل %s. يرجى التحقق من لوحة الإشعارات للتقدم ومجلد التنزيل للملف المكتمل.</string>
     <string name="online_module_empty">لا توجد وحدات متاحة</string>
+    <string name="settings_apm_stay_on_page">البقاء على الصفحة</string>
+    <string name="settings_apm_stay_on_page_summary">لا تعود تلقائياً بعد تنفيذ وحدة النظام للعملية</string>
 </resources>

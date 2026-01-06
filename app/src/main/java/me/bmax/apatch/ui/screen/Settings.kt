@@ -262,6 +262,34 @@ fun SettingScreen() {
                             })
                     }
 
+                    // Stay on Page
+                    if (aPatchReady) {
+                        var stayOnPage by rememberSaveable {
+                            mutableStateOf(prefs.getBoolean("apm_action_stay_on_page", true))
+                        }
+                        SuperSwitch(
+                            title = stringResource(id = R.string.settings_apm_stay_on_page),
+                            summary = stringResource(id = R.string.settings_apm_stay_on_page_summary),
+                            checked = stayOnPage,
+                            onCheckedChange = {
+                                prefs.edit { putBoolean("apm_action_stay_on_page", it) }
+                                stayOnPage = it
+                            })
+
+                        // APM Sorting
+                        var apmSortEnabled by rememberSaveable {
+                            mutableStateOf(prefs.getBoolean("apm_sort_enabled", true))
+                        }
+                        SuperSwitch(
+                            title = stringResource(id = R.string.settings_apm_sorting),
+                            summary = stringResource(id = R.string.settings_apm_sorting_summary),
+                            checked = apmSortEnabled,
+                            onCheckedChange = {
+                                prefs.edit { putBoolean("apm_sort_enabled", it) }
+                                apmSortEnabled = it
+                            })
+                    }
+
                     // WebView Debug
                     if (aPatchReady) {
                         var enableWebDebugging by rememberSaveable {
@@ -333,6 +361,26 @@ fun SettingScreen() {
                         onSelectedIndexChange = { index ->
                             prefs.edit { putInt("color_mode", index) }
                             themeMode = index
+                        }
+                    )
+
+                    // Home Layout
+                    val homeLayoutItems = listOf(
+                        stringResource(id = R.string.settings_home_layout_default),
+                        stringResource(id = R.string.settings_home_layout_list)
+                    )
+                    val homeLayoutValues = listOf("default", "list")
+                    var currentHomeLayout by rememberSaveable { mutableStateOf(prefs.getString("home_layout_style", "default") ?: "default") }
+                    var homeLayoutIndex = homeLayoutValues.indexOf(currentHomeLayout)
+                    if (homeLayoutIndex == -1) homeLayoutIndex = 0
+
+                    SuperDropdown(
+                        title = stringResource(id = R.string.settings_home_layout_style),
+                        items = homeLayoutItems,
+                        selectedIndex = homeLayoutIndex,
+                        onSelectedIndexChange = { index ->
+                            prefs.edit { putString("home_layout_style", homeLayoutValues[index]) }
+                            currentHomeLayout = homeLayoutValues[index]
                         }
                     )
 

@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Icon
@@ -41,12 +42,48 @@ fun IconTextButton(
 }
 
 @Composable
+fun IconTextButton(
+    imageVector: ImageVector,
+    onClick: () -> Unit
+) {
+    IconButton(
+        onClick = onClick,
+        enabled = true,
+        backgroundColor = MiuixTheme.colorScheme.secondaryContainer
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                modifier = Modifier.size(20.dp),
+                imageVector = imageVector,
+                contentDescription = null
+            )
+        }
+    }
+}
+
+@Composable
 fun ModuleStateIndicator(
     @DrawableRes icon: Int, color: Color = MiuixTheme.colorScheme.outline
 ) {
     Image(
         modifier = Modifier.requiredSize(150.dp),
         painter = painterResource(id = icon),
+        contentDescription = null,
+        alpha = 0.1f,
+        colorFilter = ColorFilter.tint(color)
+    )
+}
+
+@Composable
+fun ModuleStateIndicator(
+    imageVector: ImageVector, color: Color = MiuixTheme.colorScheme.outline
+) {
+    Image(
+        modifier = Modifier.requiredSize(150.dp),
+        imageVector = imageVector,
         contentDescription = null,
         alpha = 0.1f,
         colorFilter = ColorFilter.tint(color)

@@ -23,6 +23,8 @@
     <string name="system_default">循天道常序</string>
     <string name="settings_global_namespace_mode">全域仙域结界</string>
     <string name="settings_global_namespace_mode_summary">凡登仙法会，皆启全域洞天挂载结界</string>
+    <string name="settings_apm_sorting">天道仙符智慧排序</string>
+    <string name="settings_apm_sorting_summary">使仙阶更高的仙符优先显示。</string>
     <string name="settings_clear_super_key_dialog">道友确欲破除此秘钥乎？</string>
 
     <string name="home_learn_apatch">参悟APatch仙法</string>
@@ -205,8 +207,8 @@
     <string name="settings_use_system_color_theme">天道色章</string>
     <string name="settings_use_system_color_theme_summary">用天道因仙壁而生之色章</string>
     <string name="settings_custom_color_theme">仙府色章</string>
-
-    <string name="amber_theme">琥珀仙光</string>
+        <string name="settings_home_layout_style">仙府主殿布局样式</string>
+        <string name="amber_theme">琥珀仙光</string>
     <string name="blue_theme">青冥仙光</string>
     <string name="blue_grey_theme">青灰仙光</string>
     <string name="brown_theme">褐尘仙光</string>
@@ -259,4 +261,6 @@
     <string name="update_available_message">检测到道友的仙法篇次过低，是否要下载新篇次的仙法？</string>
     <string name="update_action">渡劫升仙</string>
     <string name="update_close">关闭</string>
-    </resources>
+    <string name="settings_apm_stay_on_page">留于仙法操作页面</string>
+    <string name="settings_apm_stay_on_page_summary">天道仙符执行完操作后不自动返回</string>
+</resources>

@@ -94,6 +94,8 @@
     <string name="patch">Patch</string>
     <string name="settings_global_namespace_mode">Modo de namespace global</string>
     <string name="settings_global_namespace_mode_summary">Todas as sessões root usam o namespace de montagem global</string>
+    <string name="settings_apm_sorting">Classificação inteligente de APM</string>
+    <string name="settings_apm_sorting_summary">Fazer com que módulos com maior prioridade sejam exibidos primeiro.</string>
     <string name="kpatch_version_update">Versão: %1$s -&gt; %2$s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
     <string name="home_kpatch_info_title">Informações</string>
@@ -175,6 +177,7 @@
     <string name="settings_use_system_color_theme">Tema de cores do sistema</string>
     <string name="settings_use_system_color_theme_summary">Use um tema de cores gerado pelo sistema com base no plano de fundo atual</string>
     <string name="settings_custom_color_theme">Tema de cores</string>
+    <string name="settings_home_layout_style">Estilo de layout da tela inicial</string>
     <string name="green_theme">Verde</string>
     <string name="deep_orange_theme">Laranja profundo</string>
     <string name="lime_theme">Verde-limão</string>
@@ -230,4 +233,6 @@
     <string name="online_module_download_complete">Download complete: %s</string>
     <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
     <string name="online_module_empty">No modules available</string>
+    <string name="settings_apm_stay_on_page">Permanecer na página</string>
+    <string name="settings_apm_stay_on_page_summary">Não retornar automaticamente após o módulo do sistema executar a operação</string>
 </resources>

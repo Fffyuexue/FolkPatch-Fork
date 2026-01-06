@@ -94,6 +94,8 @@
     <string name="patch">Патч</string>
     <string name="settings_global_namespace_mode">Режим глобального пространства имён</string>
     <string name="settings_global_namespace_mode_summary">Все сеансы суперпользователя root используют монтирование глобального пространства имён</string>
+    <string name="settings_apm_sorting">Умная сортировка APM</string>
+    <string name="settings_apm_sorting_summary">Отображать модули с более высоким приоритетом первыми.</string>
     <string name="kpatch_version_update">Версия: %1$s → %2$s</string>
     <string name="home_kpatch_info_title">Подробнее</string>
     <string name="home_ap_cando_reboot">Перезагрузить</string>
@@ -179,6 +181,7 @@
     <string name="settings_use_system_color_theme">Системная цветовая тема</string>
     <string name="settings_use_system_color_theme_summary">Использовать цветовую тему, созданную системой на основе текущих обоев</string>
     <string name="settings_custom_color_theme">Цветовая тема</string>
+    <string name="settings_home_layout_style">Стиль оформления главного экрана</string>
     <string name="deep_orange_theme">Тёмно-оранжевая</string>
     <string name="deep_purple_theme">Тёмно-фиолетовая</string>
     <string name="light_blue_theme">Голубая</string>
@@ -228,4 +231,6 @@
     <string name="online_module_download_complete">Download complete: %s</string>
     <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
     <string name="online_module_empty">No modules available</string>
+    <string name="settings_apm_stay_on_page">Оставаться на странице</string>
+    <string name="settings_apm_stay_on_page_summary">Не возвращаться автоматически после выполнения операции системным модулем</string>
 </resources>

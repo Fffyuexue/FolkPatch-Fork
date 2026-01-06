@@ -13,6 +13,9 @@
     <string name="kernel_patch">KernelPatch</string>
     <string name="android_patch">AndroidPatch</string>
 
+    <string name="unofficial_warning_title">Unofficial Version</string>
+    <string name="unofficial_warning_summary">Do not submit issues to the official repository.</string>
+
     <string name="reboot">Reboot</string>
     <string name="settings">Settings</string>
     <string name="reboot_recovery">Reboot to Recovery</string>
@@ -24,6 +27,8 @@
     <string name="system_default">System default</string>
     <string name="settings_global_namespace_mode">Global namespace mode</string>
     <string name="settings_global_namespace_mode_summary">All root sessions use the global mount namespace</string>
+    <string name="settings_apm_sorting">Smart APM sorting</string>
+    <string name="settings_apm_sorting_summary">Make modules with higher priority display first.</string>
     <string name="settings_clear_super_key_dialog">Do you really want to proceed?</string>
 
     <string name="settings_check_update">Check for updates</string>
@@ -181,6 +186,7 @@
     <string name="apm_magisk_conflict">Modules are unavailable due to a conflict with Magisk!</string>
     <string name="apm_reboot_to_apply">Reboot to take effect</string>
     <string name="apm_changelog">Changelog</string>
+    <string name="apm_changelog_failed">Failed to get changelog</string>
     <string name="apm_update">Update</string>
     <string name="apm_downloading">Downloading module: %s</string>
     <string name="apm_start_downloading">Start downloading: %s</string>
@@ -197,6 +203,8 @@
 
     <string name="apm_webui_open">Open</string>
     <string name="apm_action">Action</string>
+    <string name="settings_apm_stay_on_page">Stay on page</string>
+    <string name="settings_apm_stay_on_page_summary">Do not automatically return after the system module performs the operation</string>
     <string name="enable_web_debugging">Enable WebView debugging</string>
     <string name="enable_web_debugging_summary">Can be used to debug WebUI. Please enable only when needed.</string>
 
@@ -239,6 +247,10 @@
     <string name="settings_theme_mode_monet_system">Monet (Follow system)</string>
     <string name="settings_theme_mode_monet_light">Monet (Light)</string>
     <string name="settings_theme_mode_monet_dark">Monet (Dark)</string>
+
+    <string name="settings_home_layout_style">Home layout style</string>
+    <string name="settings_home_layout_default" translatable="false">Default</string>
+    <string name="settings_home_layout_list" translatable="false">List</string>
 
     <string name="settings_night_mode_follow_sys">Follow system\'s dark theme</string>
     <string name="settings_night_mode_follow_sys_summary">Automatically switch to dark theme based on system settings</string>

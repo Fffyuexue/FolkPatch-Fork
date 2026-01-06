@@ -11,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import me.bmax.apatch.APApplication
 import me.bmax.apatch.util.HanziToPinyin
 import me.bmax.apatch.apApp
 import me.bmax.apatch.util.listModules
@@ -23,6 +24,13 @@ class APModuleViewModel : ViewModel() {
     companion object {
         private const val TAG = "ModuleViewModel"
         private var modules by mutableStateOf<List<ModuleInfo>>(emptyList())
+        private val zygiskModuleIds = listOf(
+            "zygisksu",
+            "zygisknext",
+            "rezygisk",
+            "neozygisk",
+            "shirokozygisk"
+        )
     }
 
     class ModuleInfo(
@@ -38,6 +46,8 @@ class APModuleViewModel : ViewModel() {
         val updateJson: String,
         val hasWebUi: Boolean,
         val hasActionScript: Boolean,
+        val isZygisk: Boolean,
+        val isLSPosed: Boolean,
     )
 
     data class ModuleUpdateInfo(
@@ -52,12 +62,28 @@ class APModuleViewModel : ViewModel() {
 
     var search by mutableStateOf("")
 
+    var isApmSortEnabled by mutableStateOf(APApplication.sharedPreferences.getBoolean("apm_sort_enabled", true))
+
+    fun setSortEnabled(enabled: Boolean) {
+        isApmSortEnabled = enabled
+        APApplication.sharedPreferences.edit().putBoolean("apm_sort_enabled", enabled).apply()
+    }
+
     val moduleList by derivedStateOf {
         val comparator = compareBy(Collator.getInstance(Locale.getDefault()), ModuleInfo::id)
+        val finalComparator = if (isApmSortEnabled) {
+            compareByDescending<ModuleInfo> { it.isZygisk }
+                .thenByDescending { it.isLSPosed }
+                .thenByDescending { it.hasWebUi }
+                .thenByDescending { it.hasActionScript }
+                .thenBy(Collator.getInstance(Locale.getDefault())) { it.id }
+        } else {
+            comparator
+        }
         modules.filter {
             it.id.contains(search, true) || it.name.contains(search, true) || HanziToPinyin.getInstance()
                 .toPinyinString(it.name).contains(search, true)
-        }.sortedWith(comparator)
+        }.sortedWith(finalComparator)
             .also {
                 isRefreshing = false
             }
@@ -104,7 +130,9 @@ class APModuleViewModel : ViewModel() {
                             obj.getBoolean("remove"),
                             obj.optString("updateJson"),
                             obj.optBoolean("web"),
-                            obj.optBoolean("action")
+                            obj.optBoolean("action"),
+                            zygiskModuleIds.contains(obj.getString("id")),
+                            obj.optString("name").contains("LSPosed", ignoreCase = true)
                         )
                     }.toList()
                 isNeedRefresh = false

@@ -55,6 +55,7 @@ fun UninstallModeSelectScreen(navigator: DestinationsNavigator) {
                     title = stringResource(R.string.home_dialog_uninstall_ap_only),
                     onClick = {
                         APApplication.uninstallApatch()
+                        navigator.popBackStack()
                     }
                 )
             }

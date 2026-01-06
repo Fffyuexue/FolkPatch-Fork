@@ -94,6 +94,8 @@
     <string name="patch">Patch</string>
     <string name="settings_global_namespace_mode_summary">Gunakan universal namespace ke semua root sesi</string>
     <string name="settings_global_namespace_mode">Mode universal namespace</string>
+    <string name="settings_apm_sorting">Pengurutan APM cerdas</string>
+    <string name="settings_apm_sorting_summary">Buat modul dengan prioritas lebih tinggi ditampilkan lebih dulu.</string>
     <string name="settings_clear_super_key_dialog">Anda yakin untuk melanjutkan?</string>
     <string name="kpatch_version_update">Versi: %1$s -&gt; %2$s</string>
     <string name="home_kpatch_info_title">Info</string>
@@ -175,6 +177,7 @@
     <string name="settings_use_system_color_theme">Tema warna sistem</string>
     <string name="settings_use_system_color_theme_summary">Gunakan tema warna yang dihasilkan sistem berdasarkan wallpaper saat ini</string>
     <string name="settings_custom_color_theme">Warna tema</string>
+    <string name="settings_home_layout_style">Gaya tata letak beranda</string>
     <string name="red_theme">Merah</string>
     <string name="sakura_theme">Merah muda sakura</string>
     <string name="teal_theme">Hijau kebiruan</string>
@@ -228,4 +231,6 @@
     <string name="online_module_download_complete">Download complete: %s</string>
     <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
     <string name="online_module_empty">No modules available</string>
+    <string name="settings_apm_stay_on_page">Tetap di halaman</string>
+    <string name="settings_apm_stay_on_page_summary">Jangan kembali secara otomatis setelah modul sistem melakukan operasi</string>
 </resources>

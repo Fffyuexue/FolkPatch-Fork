@@ -114,6 +114,8 @@
     <string name="patch">修补内核镜像</string>
     <string name="settings_global_namespace_mode_summary">所有 Root 会话均使用全局挂载命名空间</string>
     <string name="settings_global_namespace_mode">全局命名空间模式</string>
+    <string name="settings_apm_sorting">智能 APM 排序</string>
+    <string name="settings_apm_sorting_summary">让优先级更高的模块优先显示。</string>
     <string name="settings_clear_super_key_dialog">你真的确定要继续吗？</string>
     <string name="kpatch_version_update">版本：%1$s → %2$s</string>
     <string name="kpatch_shadow_path_title">内核补丁</string>
@@ -207,6 +209,7 @@
     <string name="settings_use_system_color_theme">系统颜色主题</string>
     <string name="settings_use_system_color_theme_summary">使用由系统由壁纸取色生成的主题</string>
     <string name="settings_custom_color_theme">颜色主题</string>
+    <string name="settings_home_layout_style">主页布局样式</string>
     <string name="amber_theme">琥珀色主题</string>
     <string name="blue_theme">蓝色主题</string>
     <string name="blue_grey_theme">蓝灰色主题</string>
@@ -234,6 +237,8 @@
     <string name="about_telegram_group">Telegram 群组</string>
     <string name="about_powered_by">由 %1$s 强力驱动</string>
     <string name="apm_action">执行</string>
+    <string name="settings_apm_stay_on_page">留在操作页面</string>
+    <string name="settings_apm_stay_on_page_summary">系统模块执行完操作后不自动返回</string>
     <string name="crash_handle_title">应用崩溃了…</string>
     <string name="crash_handle_copy">复制崩溃日志</string>
     <string name="crash_handle_copied">崩溃日志已复制到剪贴板。</string>

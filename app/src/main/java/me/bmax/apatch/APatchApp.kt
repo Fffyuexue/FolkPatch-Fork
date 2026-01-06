@@ -196,6 +196,9 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                         return@thread
                     }
 
+                    // Refresh shell after becoming root
+                    APatchCli.refresh()
+
                     // KernelPatch version
                     //val buildV = Version.buildKPVUInt()
                     //val installedV = Version.installedKPVUInt()
@@ -223,16 +226,10 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                     Log.d(TAG, "manager version: $mgv, installed apd version: $installedApdVInt")
 
                     // Check if AndroidPatch is installed by multiple methods to avoid false negatives
-                    val isApdInstalled = Version.installedApdVInt > 0 || 
-                                         File(APD_PATH).exists() || 
-                                         File(APATCH_FOLDER).exists() ||
-                                         File(PACKAGE_CONFIG_FILE).exists()
+                    // Now Version.installedApdVInt includes file checks via root shell, so it's reliable
+                    val isApdInstalled = Version.installedApdVInt > 0
                     
-                    Log.d(TAG, "isApdInstalled check: apdVInt=${Version.installedApdVInt}, " +
-                              "apdExists=${File(APD_PATH).exists()}, " +
-                              "apFolderExists=${File(APATCH_FOLDER).exists()}, " +
-                              "configExists=${File(PACKAGE_CONFIG_FILE).exists()}, " +
-                              "final=$isApdInstalled")
+                    Log.d(TAG, "isApdInstalled check: apdVInt=${Version.installedApdVInt}, final=$isApdInstalled")
 
                     if (isApdInstalled) {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
@@ -240,6 +237,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
 
                     if (isApdInstalled && mgv.toInt() != Version.installedApdVInt && Version.installedApdVInt > 0) {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_NEED_UPDATE)
+                        Log.w(TAG, "APatch version mismatch: manager=$mgv, installed=${Version.installedApdVInt}, triggering update")
                         // su path
                         val suPathFile = File(SU_PATH_FILE)
                         if (suPathFile.exists()) {

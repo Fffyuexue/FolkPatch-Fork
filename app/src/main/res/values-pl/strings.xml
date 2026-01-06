@@ -94,6 +94,8 @@
     <string name="patch">Załataj</string>
     <string name="settings_global_namespace_mode">Tryb globalnej przestrzeni nazw</string>
     <string name="settings_global_namespace_mode_summary">Wszystkie sesje root korzystają z globalnej przestrzeni montowania nazw</string>
+    <string name="settings_apm_sorting">Inteligentne sortowanie APM</string>
+    <string name="settings_apm_sorting_summary">Wyświetlaj moduły z wyższym priorytetem jako pierwsze.</string>
     <string name="settings_clear_super_key_dialog">Czy na pewno chcesz kontynuować?</string>
     <string name="kpatch_version_update">Wersja: %1$s -&gt; %2$s</string>
     <string name="home_kpatch_info_title">Informacje</string>
@@ -172,6 +174,7 @@
     <string name="settings_use_system_color_theme">Motyw kolorów systemu</string>
     <string name="settings_use_system_color_theme_summary">Używaj motywu kolorystycznego wygenerowanego przez system na podstawie bieżącej tapety</string>
     <string name="settings_custom_color_theme">Motyw kolorystyczny</string>
+    <string name="settings_home_layout_style">Styl układu pulpitu</string>
     <string name="blue_grey_theme">Niebiesko-szary</string>
     <string name="blue_theme">Niebieski</string>
     <string name="brown_theme">Brązowy</string>
@@ -228,4 +231,6 @@
     <string name="online_module_download_complete">Download complete: %s</string>
     <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
     <string name="online_module_empty">No modules available</string>
+    <string name="settings_apm_stay_on_page">Zostań na stronie</string>
+    <string name="settings_apm_stay_on_page_summary">Nie wracaj automatycznie po wykonaniu operacji przez moduł systemowy</string>
 </resources>

@@ -78,6 +78,8 @@
     <string name="system_default">システムのデフォルト</string>
     <string name="settings_global_namespace_mode">グローバル名前空間モード</string>
     <string name="settings_global_namespace_mode_summary">すべての root セッションはグローバルマウント名前空間を使用します</string>
+    <string name="settings_apm_sorting">スマートAPMソート</string>
+    <string name="settings_apm_sorting_summary">優先度の高いモジュールを先頭に表示します。</string>
     <string name="kpm_args">パラメータ</string>
     <string name="kpm_apm_empty">ロードされたモジュールはありません</string>
     <string name="kpm_unload">アンロード</string>
@@ -189,6 +191,7 @@
     <string name="settings_use_system_color_theme">ダイナミックテーマ</string>
     <string name="settings_night_mode_follow_sys">システムテーマに従う</string>
     <string name="settings_custom_color_theme">カラーテーマ</string>
+    <string name="settings_home_layout_style">ホーム画面のレイアウトスタイル</string>
     <string name="amber_theme">アンバー</string>
     <string name="blue_grey_theme">ブルーグレー</string>
     <string name="green_theme">グリーン</string>
@@ -230,4 +233,6 @@
     <string name="online_module_download_complete">ダウンロード完了：%s</string>
     <string name="online_module_download_notification">%s をダウンロード中です。進行状況は通知パネルで確認し、完了したファイルはDownloadフォルダで確認してください。</string>
     <string name="online_module_empty">利用可能なモジュールがありません</string>
+    <string name="settings_apm_stay_on_page">ページに留まる</string>
+    <string name="settings_apm_stay_on_page_summary">システムモジュールが操作を実行した後に自動的に戻らない</string>
 </resources>

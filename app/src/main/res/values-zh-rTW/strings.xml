@@ -94,6 +94,8 @@
     <string name="patch">修補</string>
     <string name="settings_global_namespace_mode_summary">所有 Root 工作階段將會全域掛載命名空間</string>
     <string name="settings_global_namespace_mode">全域命名空間模式</string>
+    <string name="settings_apm_sorting">智慧 APM 排序</string>
+    <string name="settings_apm_sorting_summary">讓優先級較高的模組先顯示。</string>
     <string name="settings_clear_super_key_dialog">你確定要繼續嗎？</string>
     <string name="kpatch_version_update">版本：%1$s -&gt; %2$s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
@@ -190,6 +192,7 @@
     <string name="settings_night_mode_follow_sys_summary">根據系統設定自動切換為深色主題</string>
     <string name="settings_use_system_color_theme">系統顏色主題</string>
     <string name="settings_custom_color_theme">顏色主題</string>
+    <string name="settings_home_layout_style">首頁佈局樣式</string>
     <string name="amber_theme">琥珀色主題</string>
     <string name="blue_grey_theme">藍灰色主題</string>
     <string name="brown_theme">棕色主題</string>
@@ -227,4 +230,6 @@
     <string name="online_module_download_complete">下載完成：%s</string>
     <string name="online_module_download_notification">正在下載 %s。請查看通知欄取得下載進度，下載檔案位於Download資料夾中。</string>
     <string name="online_module_empty">暫無可用模組</string>
+    <string name="settings_apm_stay_on_page">留在操作頁面</string>
+    <string name="settings_apm_stay_on_page_summary">系統模組執行完操作後不自動返回</string>
 </resources>

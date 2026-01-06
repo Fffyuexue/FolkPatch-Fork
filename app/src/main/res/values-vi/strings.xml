@@ -94,6 +94,8 @@
     <string name="patch">Bản vá</string>
     <string name="settings_global_namespace_mode">Chế độ Global Namespace</string>
     <string name="settings_global_namespace_mode_summary">Tất cả các phiên Root sử dụng Namespace Mount Global</string>
+    <string name="settings_apm_sorting">Sắp xếp APM thông minh</string>
+    <string name="settings_apm_sorting_summary">Hiển thị các mô-đun có ưu tiên cao hơn trước.</string>
     <string name="patch_embed_kpm_btn">Nhúng KPM</string>
     <string name="patch_item_extra_event">Sự kiện:</string>
     <string name="mode_select_page_select_file">Chọn một boot image để vá</string>
@@ -112,6 +114,7 @@
     <string name="settings_night_mode_follow_sys_summary">Tự động chuyển sang chủ đề tối theo thiết đặt của hệ thống</string>
     <string name="settings_use_system_color_theme_summary">Sử dụng chủ đề màu do hệ thống tạo với hình nền hiện tại</string>
     <string name="settings_custom_color_theme">Chủ đề màu sắc</string>
+    <string name="settings_home_layout_style">Kiểu bố cục trang chủ</string>
     <string name="blue_grey_theme">Chủ đề BlueGrey</string>
     <string name="brown_theme">Chủ đề màu nâu</string>
     <string name="deep_purple_theme">Chủ đề màu tím đậm</string>
@@ -230,4 +233,6 @@
     <string name="online_module_download_complete">Download complete: %s</string>
     <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
     <string name="online_module_empty">No modules available</string>
+    <string name="settings_apm_stay_on_page">Ở lại trang</string>
+    <string name="settings_apm_stay_on_page_summary">Không tự động quay lại sau khi mô-đun hệ thống thực hiện thao tác</string>
 </resources>

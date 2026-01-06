@@ -91,6 +91,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CloudDownload
 import java.io.IOException
 
+import androidx.compose.ui.graphics.Color
+
 private const val TAG = "KernelPatchModule"
 private lateinit var targetKPMToControl: KPModel.KPMInfo
 
@@ -180,13 +182,14 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.package_import),
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = MiuixTheme.colorScheme.onPrimary
                     )
                 }
 
                 ListPopup(
                     show = expanded,
-                    alignment = PopupPositionProvider.Align.Left,
+                    alignment = PopupPositionProvider.Align.Right,
                     onDismissRequest = { expanded.value = false }
                 ) {
 
