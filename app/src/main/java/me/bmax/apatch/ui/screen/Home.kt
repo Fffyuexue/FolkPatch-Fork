@@ -152,14 +152,19 @@ fun MainHomeScreen(navigator: DestinationsNavigator) {
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
-                .padding(innerPadding)
-                .padding(horizontal = 16.dp)
+                .fillMaxSize()
+                .padding(top = innerPadding.calculateTopPadding())
                 .overScrollVertical()
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
+            contentPadding = PaddingValues(
+                start = 16.dp,
+                end = 16.dp,
+                top = 12.dp,
+                bottom = innerPadding.calculateBottomPadding() + 100.dp
+            )
         ) {
             item {
                 Column(
-                    modifier = Modifier.padding(vertical = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     BackupWarningCard()
@@ -192,8 +197,6 @@ fun MainHomeScreen(navigator: DestinationsNavigator) {
                     if (!hideAboutCard) {
                         LearnMoreCard()
                     }
-
-                    Spacer(Modifier.height(100.dp))
                 }
             }
         }
