@@ -957,6 +957,10 @@ fun AStatusCard(apState: APApplication.State) {
                         Icon(Icons.Outlined.CheckCircle, stringResource(R.string.home_working))
                     }
 
+                    APApplication.State.ANDROIDPATCH_NEED_UPDATE -> {
+                        Icon(Icons.Outlined.SystemUpdate, stringResource(R.string.home_kp_need_update))
+                    }
+
                     else -> {
                         Icon(
                             Icons.AutoMirrored.Outlined.HelpOutline,
@@ -992,6 +996,13 @@ fun AStatusCard(apState: APApplication.State) {
                             )
                         }
 
+                        APApplication.State.ANDROIDPATCH_NEED_UPDATE -> {
+                            Text(
+                                text = stringResource(R.string.home_kp_need_update),
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        }
+
                         else -> {
                             Text(
                                 text = stringResource(R.string.home_install_unknown),
@@ -1014,6 +1025,10 @@ fun AStatusCard(apState: APApplication.State) {
                                     // Do nothing
                                 }
 
+                                APApplication.State.ANDROIDPATCH_NEED_UPDATE -> {
+                                    APApplication.installApatch()
+                                }
+
                                 else -> {
                                     APApplication.uninstallApatch()
                                 }
@@ -1026,6 +1041,10 @@ fun AStatusCard(apState: APApplication.State) {
 
                                 APApplication.State.ANDROIDPATCH_UNINSTALLING -> {
                                     Icon(Icons.Outlined.Cached, contentDescription = "busy")
+                                }
+
+                                APApplication.State.ANDROIDPATCH_NEED_UPDATE -> {
+                                    Text(text = stringResource(id = R.string.home_kp_cando_update))
                                 }
 
                                 else -> {

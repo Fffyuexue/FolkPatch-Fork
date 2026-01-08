@@ -145,7 +145,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         @Suppress("DEPRECATION")
         fun installApatch() {
             val state = _apStateLiveData.value
-            if (state != State.ANDROIDPATCH_NOT_INSTALLED) {
+            if (state == State.ANDROIDPATCH_INSTALLING) {
                 return
             }
             _apStateLiveData.value = State.ANDROIDPATCH_INSTALLING
@@ -157,6 +157,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
                 "mkdir -p $APATCH_BIN_FOLDER",
                 "mkdir -p $APATCH_LOG_FOLDER",
 
+                "rm -f $APD_PATH",
                 "cp -f ${nativeDir}/libapd.so $APD_PATH",
                 "chmod +x $APD_PATH",
                 "ln -s $APD_PATH $APD_LINK_PATH",
@@ -248,7 +249,14 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
                     Log.d(TAG, "manager version: $mgv, installed apd version: $installedApdVInt")
 
                     if (BuildConfig.DEBUG_FAKE_ROOT || Version.installedApdVInt > 0) {
-                        _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
+                        // Check if version matches manager version
+                        if (Version.installedApdVInt == mgv.toInt()) {
+                            _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
+                        } else {
+                            _apStateLiveData.postValue(State.ANDROIDPATCH_NEED_UPDATE)
+                        }
+                    } else {
+                        _apStateLiveData.postValue(State.ANDROIDPATCH_NOT_INSTALLED)
                     }
                     Log.d(TAG, "ap state: " + _apStateLiveData.value)
                     
