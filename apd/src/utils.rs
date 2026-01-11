@@ -15,16 +15,6 @@ use log::{info, warn};
 
 use crate::{defs, supercall::sc_su_get_safemode};
 
-pub fn ensure_clean_dir(dir: &str) -> Result<()> {
-    let path = Path::new(dir);
-    log::debug!("ensure_clean_dir: {}", path.display());
-    if path.exists() {
-        log::debug!("ensure_clean_dir: {} exists, remove it", path.display());
-        std::fs::remove_dir_all(path)?;
-    }
-    Ok(create_dir_all(path)?)
-}
-
 pub fn ensure_file_exists<T: AsRef<Path>>(file: T) -> Result<()> {
     match File::options().write(true).create_new(true).open(&file) {
         Result::Ok(_) => Ok(()),
@@ -189,8 +179,4 @@ pub fn get_tmp_path() -> &'static str {
         return defs::TEMP_DIR;
     }
     ""
-}
-pub fn get_work_dir() -> String {
-    let tmp_path = get_tmp_path();
-    format!("{}/workdir/", tmp_path)
 }
