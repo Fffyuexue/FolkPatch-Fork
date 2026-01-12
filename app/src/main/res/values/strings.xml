@@ -335,8 +335,10 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">App DPI</string>
-    <string name="settings_magic_mount">Enable Magic Mount</string>
-    <string name="settings_magic_mount_summary">Enable the built-in mounting system without relying on Metamodule</string>
+    <string name="settings_magic_mount">Folk Mount API</string>
+    <string name="settings_magic_mount_summary">Enable the built-in module mounting system</string>
+    <string name="settings_overlayfs_mode">Hybrid Mount Mode</string>
+    <string name="settings_overlayfs_mode_summary">Use OverlayFS with automatic Magic Mount fallback for maximum compatibility</string>
     <string name="settings_app_title">App Title</string>
     <string name="settings_custom_background">Custom Background</string>
     <string name="settings_custom_background_enabled">Custom Background Enabled</string>

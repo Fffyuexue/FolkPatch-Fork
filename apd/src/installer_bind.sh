@@ -436,7 +436,7 @@ install_module() {
 [ -z $BOOTMODE ] && BOOTMODE=false
 
 NVBASE=/data/adb
-TMPDIR=/data/adb/ap/tmp
+TMPDIR=/dev/tmp
 POSTFSDATAD=$NVBASE/post-fs-data.d
 SERVICED=$NVBASE/service.d
 

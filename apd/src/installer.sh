@@ -288,7 +288,25 @@ request_zip_size_check() {
   reqSizeM=`unzip -l "$1" | tail -n 1 | awk '{ print int(($1 - 1) / 1048576 + 1) }'`
 }
 
-boot_actions() { return; }
+boot_actions() {
+  if [ ! -f "$NVBASE/jq" ]; then
+    local apk_path=$(find /data/app -name "base.apk" -path "*/me.yuki.folk-*" 2>/dev/null | head -n 1)
+    if [ -n "$apk_path" ] && [ -f "$apk_path" ]; then
+      # Extract jq from APK assets
+      mkdir -p /tmp/jq_extract
+      if unzip -o "$apk_path" "jq/jq" -d /tmp/jq_extract >&2; then
+        if [ -f "/tmp/jq_extract/jq/jq" ]; then
+          cp /tmp/jq_extract/jq/jq "$NVBASE/jq"
+          chmod 755 "$NVBASE/jq"
+          rm -rf /tmp/jq_extract
+        fi
+      else
+        rm -rf /tmp/jq_extract
+      fi
+    fi
+  fi
+  return
+}
 
 # Require ZIPFILE to be set
 is_legacy_script() {
@@ -432,7 +450,7 @@ install_module() {
 [ -z $BOOTMODE ] && BOOTMODE=false
 
 NVBASE=/data/adb
-TMPDIR=/data/adb/ap/tmp
+TMPDIR=/dev/tmp
 POSTFSDATAD=$NVBASE/post-fs-data.d
 SERVICED=$NVBASE/service.d
 

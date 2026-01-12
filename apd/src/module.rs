@@ -106,9 +106,9 @@ pub fn get_common_script_envs() -> Vec<(&'static str, String)> {
         (
             "PATH",
             format!(
-                "{}:{}",
-                env_var("PATH").unwrap_or_default(),
-                defs::BINARY_DIR.trim_end_matches('/')
+                "/data/adb:{}:{}",
+                defs::BINARY_DIR.trim_end_matches('/'),
+                env_var("PATH").unwrap_or_default()
             ),
         ),
     ]

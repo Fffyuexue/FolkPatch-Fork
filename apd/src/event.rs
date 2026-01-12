@@ -49,9 +49,23 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     }
 
     if Path::new(defs::MAGIC_MOUNT_FILE).exists() {
-        info!("Magic Mount enabled");
-        if let Err(e) = crate::magic_mount::magic_mount() {
-            log::error!("Magic Mount failed: {}", e);
+        // Check which mount mode to use
+        let use_overlayfs = Path::new(defs::OVERLAYFS_MODE_FILE).exists();
+
+        if use_overlayfs {
+            info!("OverlayFS mode enabled");
+            if let Err(e) = crate::magic_mount::overlayfs_mount() {
+                log::error!("OverlayFS mount failed: {}", e);
+                warn!("Falling back to Magic Mount mode");
+                if let Err(e) = crate::magic_mount::magic_mount() {
+                    log::error!("Magic Mount fallback also failed: {}", e);
+                }
+            }
+        } else {
+            info!("Magic Mount mode enabled");
+            if let Err(e) = crate::magic_mount::magic_mount() {
+                log::error!("Magic Mount failed: {}", e);
+            }
         }
     } else {
         info!("Magic Mount disabled");

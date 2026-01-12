@@ -147,10 +147,12 @@ import me.bmax.apatch.util.PermissionUtils
 import me.bmax.apatch.util.getBugreportFile
 import me.bmax.apatch.util.isGlobalNamespaceEnabled
 import me.bmax.apatch.util.isMagicMountEnabled
+import me.bmax.apatch.util.isOverlayFSModeEnabled
 import me.bmax.apatch.util.outputStream
 import me.bmax.apatch.util.rootShellForResult
 import me.bmax.apatch.util.setGlobalNamespaceEnabled
 import me.bmax.apatch.util.setMagicMountEnabled
+import me.bmax.apatch.util.setOverlayFSModeEnabled
 import me.bmax.apatch.util.ui.APDialogBlurBehindUtils
 import me.bmax.apatch.util.ui.LocalSnackbarHost
 import me.bmax.apatch.util.ui.NavigationBarsSpacer
@@ -199,6 +201,9 @@ fun SettingScreen(navigator: DestinationsNavigator) {
     var isMagicMountEnabled by rememberSaveable {
         mutableStateOf(false)
     }
+    var isOverlayFSModeEnabled by rememberSaveable {
+        mutableStateOf(false)
+    }
     var autoBackupBoot by rememberSaveable {
         mutableStateOf<Boolean>(APApplication.sharedPreferences.getBoolean("auto_backup_boot", true))
     }
@@ -210,6 +215,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
     if (kPatchReady && aPatchReady) {
         isGlobalNamespaceEnabled = isGlobalNamespaceEnabled()
         isMagicMountEnabled = isMagicMountEnabled()
+        isOverlayFSModeEnabled = isOverlayFSModeEnabled()
     }
 
     val snackBarHost = LocalSnackbarHost.current
@@ -559,6 +565,10 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val magicMountSummary = stringResource(id = R.string.settings_magic_mount_summary)
             val showMagicMount = (kPatchReady && aPatchReady) && (matchGeneral || shouldShow(magicMountTitle, magicMountSummary))
 
+            val overlayFSModeTitle = stringResource(id = R.string.settings_overlayfs_mode)
+            val overlayFSModeSummary = stringResource(id = R.string.settings_overlayfs_mode_summary)
+            val showOverlayFSMode = (kPatchReady && aPatchReady && isMagicMountEnabled) && (matchGeneral || shouldShow(overlayFSModeTitle, overlayFSModeSummary))
+
             val autoBackupBootTitle = stringResource(id = R.string.setting_auto_backup_boot)
             val autoBackupBootSummary = stringResource(id = R.string.setting_auto_backup_boot_summary)
             val showAutoBackupBoot = matchGeneral || shouldShow(autoBackupBootTitle, autoBackupBootSummary)
@@ -597,7 +607,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val currentSchemeLabel = if (currentScheme == "root_service") stringResource(R.string.app_list_loading_scheme_root_service) else stringResource(R.string.app_list_loading_scheme_package_manager)
             val showAppListLoadingScheme = matchGeneral || shouldShow(appListLoadingSchemeTitle, currentSchemeLabel)
 
-            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showMagicMount || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme
+            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showMagicMount || showOverlayFSMode || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme
 
             if (showGeneralCategory) {
                 SettingsCategory(icon = Icons.Filled.Tune, title = generalTitle, isSearching = searchText.isNotEmpty()) {
@@ -749,6 +759,19 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                             onCheckedChange = {
                                 setMagicMountEnabled(it)
                                 isMagicMountEnabled = it
+                            })
+                    }
+
+                    // OverlayFS Mode
+                    if (showOverlayFSMode) {
+                        SwitchItem(
+                            icon = Icons.Filled.FilterList,
+                            title = overlayFSModeTitle,
+                            summary = overlayFSModeSummary,
+                            checked = isOverlayFSModeEnabled,
+                            onCheckedChange = {
+                                setOverlayFSModeEnabled(it)
+                                isOverlayFSModeEnabled = it
                             })
                     }
 
