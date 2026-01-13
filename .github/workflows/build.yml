@@ -93,14 +93,21 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
           zipAlign: true
 
+      - name: Get APK path
+        id: apk_path
+        run: |
+          if [ -f "${{ steps.sign_app.outputs.signedReleaseFile }}" ]; then
+            echo "apk_path=${{ steps.sign_app.outputs.signedReleaseFile }}" >> $GITHUB_OUTPUT
+          else
+            APK=$(find app/build/outputs/apk/release -name "*.apk" | head -n 1)
+            echo "apk_path=$APK" >> $GITHUB_OUTPUT
+          fi
+
       - name: Upload build artifact
-        env:
-          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-        if: ${{ env.SIGNING_KEY != '' }}
         uses: actions/upload-artifact@v5
         with:
           name: APatch
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          path: ${{ steps.apk_path.outputs.apk_path }}
 
       - name: Post to channel
         if: ${{github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/HanaBreeze') && github.ref_type != 'tag'}}
