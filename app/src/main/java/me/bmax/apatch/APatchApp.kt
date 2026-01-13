@@ -21,7 +21,6 @@ import me.bmax.apatch.util.MusicManager
 import me.bmax.apatch.util.Version
 import me.bmax.apatch.util.getRootShell
 import me.bmax.apatch.util.rootShellForResult
-import me.bmax.apatch.util.verifyAppSignature
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import java.io.File
@@ -102,7 +101,6 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         const val SP_NAME = "config"
         private const val SHOW_BACKUP_WARN = "show_backup_warning"
         lateinit var sharedPreferences: SharedPreferences
-        var isSignatureValid = true
         
         private val logCallback: CallbackList<String?> = object : CallbackList<String?>() {
             override fun onAddElement(s: String?) {
@@ -297,13 +295,6 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
             Thread.sleep(5000)
             exitProcess(0)
         }
-
-        Log.d(TAG, "Checking app signature...")
-        if (!BuildConfig.DEBUG && !verifyAppSignature("a9eba5b702eb55fb5f4b1a672a7133a16a7bcaea949cde43c812ef26c77de812")) {
-            Log.e(TAG, "App signature verification failed!")
-            isSignatureValid = false
-        }
-        Log.d(TAG, "App signature verification passed")
 
         // TODO: We can't totally protect superkey from be stolen by root or LSPosed-like injection tools in user space, the only way is don't use superkey,
         // TODO: 1. make me root by kernel
