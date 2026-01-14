@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">AcuteSU</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">Nama Aplikasi Desktop</string>
@@ -138,7 +138,7 @@
     <string name="home_system_version">Versi Sistem</string>
     <string name="home_kpatch_version">Versi KernelPatch</string>
     <string name="home_su_path">File yang dapat dieksekusi su</string>
-    <string name="home_apatch_version">Versi FolkPatch</string>
+    <string name="home_apatch_version">Versi AcuteSU</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch tidak terinstal</string>
@@ -162,7 +162,7 @@
     <string name="su_selinux_via_hook">Lewati melalui Hook</string>
     <string name="su_pkg_excluded_label">Kecualikan</string>
     <string name="su_pkg_excluded_setting_title">Kecualikan perubahan</string>
-    <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan FolkPatch memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
+    <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan AcuteSU memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
     <string name="su_batch_exclude_title">Pengecualian Massal</string>
     <string name="su_batch_exclude_content">Kecualikan injeksi untuk semua aplikasi non-Root, pilih tindakan</string>
     <string name="su_exclude_btn">Kecualikan</string>
@@ -206,7 +206,7 @@
     <string name="setting_reset_su_new_path">Jalur penuh baru</string>
 
     <string name="setting_auto_backup_boot">Cadangkan Boot otomatis</string>
-    <string name="setting_auto_backup_boot_summary">Otomatis mencadangkan image boot ke /storage/emulated/0/Download/FolkPatch/BootBackups/ saat melakukan patch</string>
+    <string name="setting_auto_backup_boot_summary">Otomatis mencadangkan image boot ke /storage/emulated/0/Download/AcuteSU/BootBackups/ saat melakukan patch</string>
 
     <string name="settings_folkx_engine_title">Mesin Animasi FolkX</string>
     <string name="settings_folkx_engine_summary">Gunakan animasi pegas fisik yang halus saat beralih halaman tingkat atas</string>
@@ -324,7 +324,7 @@
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">AcuteSU</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -359,8 +359,8 @@
     <string name="settings_select_system_module_background">Latar Belakang Modul Sistem</string>
     <string name="settings_select_settings_background">Latar Belakang Halaman Pengaturan</string>
     <string name="settings_launcher_icon">Ikon Peluncur</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">AcuteSU</string>
+    <string name="launcher_icon_classic">AcuteSU Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -469,7 +469,7 @@
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">Versi Tidak Resmi</string>
-    <string name="unofficial_version_message">Anda menggunakan FolkPatch, yang bukan aplikasi resmi, harap unduh aplikasi resmi!</string>
+    <string name="unofficial_version_message">Anda menggunakan AcuteSU, yang bukan aplikasi resmi, harap unduh aplikasi resmi!</string>
     <string name="go_to_github">Buka Github</string>
     <string name="settings_save_theme">Simpan Tema</string>
     <string name="settings_import_theme">Impor Tema</string>

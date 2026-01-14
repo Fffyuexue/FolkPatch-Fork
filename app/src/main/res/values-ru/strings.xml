@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">AcuteSU</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">Имя настольного приложения</string>
@@ -138,7 +138,7 @@
     <string name="home_system_version">Версия системы</string>
     <string name="home_kpatch_version">Версия KernelPatch</string>
     <string name="home_su_path">Исполняемый файл su</string>
-    <string name="home_apatch_version">Версия FolkPatch</string>
+    <string name="home_apatch_version">Версия AcuteSU</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch не установлен</string>
@@ -162,7 +162,7 @@
     <string name="su_selinux_via_hook">Обойти через хук</string>
     <string name="su_pkg_excluded_label">Исключить</string>
     <string name="su_pkg_excluded_setting_title">Исключить изменения</string>
-    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит FolkPatch восстановить любые файлы, измененные модулями этого приложения.</string>
+    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит AcuteSU восстановить любые файлы, измененные модулями этого приложения.</string>
     <string name="su_batch_exclude_title">Пакетное исключение</string>
     <string name="su_batch_exclude_content">Исключить инъекцию для всех не-ROOT приложений, выберите действие</string>
     <string name="su_exclude_btn">Исключить</string>
@@ -206,7 +206,7 @@
     <string name="setting_reset_su_new_path">Новый полный путь</string>
 
     <string name="setting_auto_backup_boot">Автоматическое резервное копирование Boot</string>
-    <string name="setting_auto_backup_boot_summary">Автоматически создавать резервную копию образа Boot в /storage/emulated/0/Download/FolkPatch/BootBackups/ при патчинге</string>
+    <string name="setting_auto_backup_boot_summary">Автоматически создавать резервную копию образа Boot в /storage/emulated/0/Download/AcuteSU/BootBackups/ при патчинге</string>
 
     <string name="settings_folkx_engine_title">Движок анимации FolkX</string>
     <string name="settings_folkx_engine_summary">Использовать плавные физические пружинные анимации при переключении страниц верхнего уровня</string>
@@ -329,7 +329,7 @@
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">AcuteSU</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -364,8 +364,8 @@
     <string name="settings_select_system_module_background">Фон системного модуля</string>
     <string name="settings_select_settings_background">Фон страницы настроек</string>
     <string name="settings_launcher_icon">Иконка лаунчера</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">AcuteSU</string>
+    <string name="launcher_icon_classic">AcuteSU Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -483,7 +483,7 @@
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">Неофициальная версия</string>
-    <string name="unofficial_version_message">Вы используете FolkPatch, который не является официальным приложением, пожалуйста, скачайте официальное приложение!</string>
+    <string name="unofficial_version_message">Вы используете AcuteSU, который не является официальным приложением, пожалуйста, скачайте официальное приложение!</string>
     <string name="go_to_github">Перейти на Github</string>
     <string name="settings_save_theme">Сохранить тему</string>
     <string name="settings_import_theme">Импортировать тему</string>

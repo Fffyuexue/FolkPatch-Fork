@@ -137,7 +137,7 @@
     <string name="home_system_version">Wersja systemu</string>
     <string name="home_kpatch_version">Wersja KernelPatch</string>
     <string name="home_su_path">Plik wykonywalny su</string>
-    <string name="home_apatch_version">Wersja FolkPatch</string>
+    <string name="home_apatch_version">Wersja AcuteSU</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch nie jest zainstalowany</string>
@@ -161,7 +161,7 @@
     <string name="su_selinux_via_hook">Omiń przez hak</string>
     <string name="su_pkg_excluded_label">Wyklucz</string>
     <string name="su_pkg_excluded_setting_title">Wyklucz modyfikacje</string>
-    <string name="su_pkg_excluded_setting_summary">Włączenie tej opcji pozwoli FolkPatch przywrócić wszelkie pliki zmodyfikowane przez moduły tej aplikacji.</string>
+    <string name="su_pkg_excluded_setting_summary">Włączenie tej opcji pozwoli AcuteSU przywrócić wszelkie pliki zmodyfikowane przez moduły tej aplikacji.</string>
     <string name="su_batch_exclude_title">Masowe wykluczanie</string>
     <string name="su_batch_exclude_content">Wyklucz wstrzykiwanie dla wszystkich aplikacji bez roota, wybierz działanie</string>
     <string name="su_exclude_btn">Wyklucz</string>
@@ -205,7 +205,7 @@
     <string name="setting_reset_su_new_path">Nowa pełna ścieżka</string>
 
     <string name="setting_auto_backup_boot">Automatyczna kopia zapasowa Boot</string>
-    <string name="setting_auto_backup_boot_summary">Automatycznie twórz kopię zapasową obrazu Boot do /storage/emulated/0/Download/FolkPatch/BootBackups/ podczas łatania</string>
+    <string name="setting_auto_backup_boot_summary">Automatycznie twórz kopię zapasową obrazu Boot do /storage/emulated/0/Download/AcuteSU/BootBackups/ podczas łatania</string>
 
     <string name="settings_folkx_engine_title">Silnik animacji FolkX</string>
     <string name="settings_folkx_engine_summary">Używaj płynnych fizycznych animacji sprężynowych przy przełączaniu stron najwyższego poziomu</string>
@@ -329,7 +329,7 @@
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">AcuteSU</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -364,8 +364,8 @@
     <string name="settings_select_system_module_background">Tło modułu systemowego</string>
     <string name="settings_select_settings_background">Tło strony ustawień</string>
     <string name="settings_launcher_icon">Ikona launchera</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">AcuteSU</string>
+    <string name="launcher_icon_classic">AcuteSU Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -476,7 +476,7 @@
     <string name="auto_backup_success">Automatyczna kopia zapasowa zakończona sukcesem: %s</string>
 
     <!-- Auto-added missing strings -->
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">AcuteSU</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Styl strony głównej</string>
@@ -486,7 +486,7 @@
     
     <!-- Unofficial Version Strings -->
     <string name="unofficial_version_title">Wersja nieoficjalna</string>
-    <string name="unofficial_version_message">Używasz FolkPatch, który nie jest oficjalną aplikacją, pobierz oficjalną aplikację!</string>
+    <string name="unofficial_version_message">Używasz AcuteSU, który nie jest oficjalną aplikacją, pobierz oficjalną aplikację!</string>
     <string name="go_to_github">Przejdź na Github</string>
     <string name="settings_save_theme">Zapisz motyw</string>
     <string name="settings_import_theme">Importuj motyw</string>
